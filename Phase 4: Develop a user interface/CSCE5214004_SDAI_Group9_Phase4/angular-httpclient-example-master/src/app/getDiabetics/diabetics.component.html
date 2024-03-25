@@ -1,0 +1,54 @@
+<ng-container *ngIf="!disableResults">
+  <div class="bg">
+    <div class="login-container">
+      <h2>Diabetic Prediction</h2>
+      <div class="form-group">
+        <label for="Glucose Level">Glucose Level</label>
+        <input
+          type="number"
+          id="Glucose Level"
+          [(ngModel)]="glucose"
+          name="Glucose Level"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="Insulin">Insulin</label>
+        <input
+          type="number"
+          id="Insulin"
+          name="Insulin"
+          [(ngModel)]="insulin"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="BMI">BMI</label>
+        <input type="number" id="BMI" name="BMI" [(ngModel)]="BMI" required />
+      </div>
+      <div class="form-group">
+        <label for="Age">Age</label>
+        <input type="number" id="Age" name="Age" [(ngModel)]="Age" required />
+      </div>
+      <button type="submit" (click)="getDiabetics()">Predict</button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="disableResults">
+  <h1>Results</h1>
+  <h1>{{responseData}}</h1>
+  <div class="results">
+  
+  <h3>Detailed Analysis Report</h3>
+  <label class="switch" >
+    <input type="checkbox" checked>
+    <span class="slider round" (click)="displayResultsMethod()"></span>
+    
+  </label>
+</div>
+  <div class="results" *ngIf="displayGraphs">
+    <img src="../../assets/Histogram.png" />
+    <img src="../../assets/HeatMap.png" />
+    <img src="../../assets/Scatter.png" />
+  </div>
+</ng-container>
